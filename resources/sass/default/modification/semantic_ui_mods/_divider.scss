@@ -1,0 +1,19 @@
+.ui {
+
+  &.divider {
+
+    &.medium {
+      margin: 0.5rem 0;
+    }
+
+    &.small {
+      margin: 0.2rem 0;
+    }
+    &.large{
+      font-size: 2.75rem;
+      font-weight: 400;
+      margin: 0.75rem 0;
+    }
+  }
+  
+}

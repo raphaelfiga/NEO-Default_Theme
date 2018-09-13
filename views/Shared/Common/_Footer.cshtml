@@ -1,0 +1,147 @@
+﻿@{
+    List<DomainSocialNetwork.Entities.SocialNetwork> redesSociais = Session["SocialNetworkLinks"] != null ? (List<DomainSocialNetwork.Entities.SocialNetwork>)Session["SocialNetworkLinks"] : new List<DomainSocialNetwork.Entities.SocialNetwork>();
+}
+
+    <div class="ui middle aligned three column centered grid fluid newsletter">
+        <div class="row">
+            <div class="center aligned column">
+                <h4 class="text uppercase">Assine nossa Newsletter</h4>
+                <p>fique por dentro das novidades da Neo Choco</p>
+                    <div class="ui form">
+                        <div class="inline field">
+                            <div class="ui left icon action input">
+                                <i class="mail icon"></i>
+                                    <input type="text" placeholder="seu@email.com.br" id="email_news">
+                                    <button class="ui button inverted basic white" id="btn_news">
+                                        <i class="send outline icon"></i>Cadastrar
+                                    </button>
+                                </div>
+                        </div>
+                    </div>
+
+            </div>
+        </div>
+    </div>
+
+<div class="ui container fluid vertical segment footer">
+    <div class="ui container">
+        <div class="ui four column equal height grid">
+            <div class="sixteen wide table ten wide computer column stackable">
+                <h4 class="ui header">ATENDIMENTO</h4>
+                <div class="ui row grid stackable three column">
+                    <div class="column">
+                        <div class="ui header">
+                            <i class="phone square icon"></i>
+                            <div class="content">@LojaCorp.Control.Company._Company.Phone1</div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="ui header">
+                            <i class="envelope square icon"></i>
+                            <div class="content">neochoco[at]websites.com.br</div>
+                        </div>
+                    </div>    
+                </div>
+                <div class="ui row grid stackable">
+                    <div class="row three column">
+                        @Html.Action("CustomPages", "Home")
+                        <div class="column">
+                            @Html.Action("GetList", "EventList")
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="ui divider"></div>
+                <div class="ui row grid stackble three column">
+                    <div class="column">
+                        <h4 class="ui header">FORMAS DE PAGAMENTO</h4>
+                        @Html.Partial("~/Views/Shared/Common/_Payments_List.cshtml")
+                    </div>
+                    <div class="column">
+                        <h4 class="ui header">ENTREGA</h4>
+                        <div class="ui small image">
+                            <img src="/assets/image/selos/correios.png">
+                        </div>
+                    </div>
+                    <div class="right aligned column">
+                    @* Page: ~/Views/Company/_EBit.cshtml *@
+                    <div class="ui horizontal list selos">
+                        <div class="item top aligned">
+                            @Html.Action("EBit", "Company")
+                        </div>
+                        <div class="item top aligned">
+                            <div class="ui tiny images">
+                                @Html.Action("GetCompanySeal", "Company")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="sixteen wide mobile five wide computer column right floated left aligned">
+                <h4 class="ui header">SIGA NOS</h4>
+                <div class="ui horizontal relaxed list social">
+
+                    @if (redesSociais.Find(f => f.Identifier == "facebook") != null)
+                    {
+                        <a class="ui facebook icon button" href="@redesSociais.Find(f => f.Identifier == "facebook").Content" target="_blank">
+                            <i class="facebook icon"></i>
+                        </a>
+                    }
+                    @if (redesSociais.Find(f => f.Identifier == "instagram") != null)
+                    {
+                        <a class="ui instagram icon button" href="@redesSociais.Find(f => f.Identifier == "instagram").Content" target="_blank">
+                            <i class="instagram icon"></i>
+                        </a>
+                    }
+                    @if (redesSociais.Find(f => f.Identifier == "twitter") != null)
+                    {
+                        <a class="ui twitter icon button" href="@redesSociais.Find(f => f.Identifier == "twitter").Content" target="_blank">
+                            <i class="twitter icon"></i>
+                        </a>
+                    }
+                    @if (redesSociais.Find(f => f.Identifier == "youtube") != null)
+                    {
+                        <a class="ui youtube icon button" href="@redesSociais.Find(f => f.Identifier == "youtube").Content" target="_blank">
+                            <i class="youtube icon"></i>
+                        </a>
+                    }
+                    @if (redesSociais.Find(f => f.Identifier == "google plus") != null)
+                    {
+                        <a class="ui google plus icon button" href="@redesSociais.Find(f => f.Identifier == "google plus").Content" target="_blank">
+                            <i class="google plus icon"></i>
+                        </a>
+                    }
+                </div>
+                <div class="ui divider"></div>
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FWebSitesFactory%2F&tabs&width=340&height=214&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=125793154189555" width="340" height="214" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ui fluid jetBrand">
+    <div class="ui container two column centered grid ">
+        <div class="row">
+        <div class="column left floated text small">
+                    <p>@LojaCorp.Control.Company._Company.FantasyName</p>
+                    <address>
+                        @{
+                            string complementAddress = LojaCorp.Control.Company._Company.Complement != "" ? " " + LojaCorp.Control.Company._Company.Complement + ", " : "";
+                        }
+                        @string.Format("{0}, {1}{2}", LojaCorp.Control.Company._Company.Address, complementAddress, LojaCorp.Control.Company._Company.Neighbourhood)
+                        -
+                        @string.Format("{0}-{1}-{2}", LojaCorp.Control.Company._Company.CEP, LojaCorp.Control.Company._Company.City, LojaCorp.Control.Company._Company.State)
+                        <br />
+                        CNPJ: @LojaCorp.Control.Company._Company.CNPJ
+                    </address>
+                </div>
+        <div class="column right floated  right aligned column">
+        <a href="https://www.websites.com.br/">@Html.Partial("Common/_Webfactorylogo")</a>
+        @Html.Partial("Common/_JetLogo")
+        </div>
+    </div>
+    </div>
+</div>
+<div class="modal-block">
+</div>
